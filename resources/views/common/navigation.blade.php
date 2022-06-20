@@ -2,7 +2,7 @@
 @php
 $links = [
     'homepage' => 'Home',
-    // 'books' => 'Books',
+    'authors' => 'Authors',
     'about-us' => 'About us'
 ];
 @endphp

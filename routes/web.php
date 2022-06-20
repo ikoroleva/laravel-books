@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\AuthorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ Route::get('/', function () {
 })->name('homepage');
 
 Route::get('/about-us', [AboutController::class, 'aboutUs'])->name('about-us');
+
+//Route::get('/admin/authors', [AuthorController::class, 'index'])->name('authors');
