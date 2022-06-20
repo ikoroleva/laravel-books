@@ -1,0 +1,15 @@
+$primary_color: black;
+$primary_font: Arial;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $primary_font;
+    color: $primary_color;
+}
+
+h1 {
+    text-decoration: underline;
+}
