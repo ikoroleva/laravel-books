@@ -1,0 +1,20 @@
+.movie {
+    display: flex;
+
+    &:nth-child(odd) {
+        background-color: #eeeeee;
+    }
+
+    &__title {
+        margin-top: 0.25em;
+    }
+
+    &__image {
+        order: -1;
+        margin-right: 1em;
+
+        img {
+            width: 5em;
+        }
+    }
+}

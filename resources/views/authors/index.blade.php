@@ -5,7 +5,7 @@
 
 @section('stylesheets')
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="about-us.css">
+    <link rel="stylesheet" href="authors.css">
 @endsection
 
 @section('content')

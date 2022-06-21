@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthorController;
+use App\Models\Book;
 
 
 /*
@@ -17,9 +18,14 @@ use App\Http\Controllers\Admin\AuthorController;
 */
 
 Route::get('/', function () {
-    return view('index/index');
+
+    $books = \App\Models\Book::orderBy('title')->limit(10)->get();
+
+    $books->load('authors');
+
+    return view('index/index', compact('books'));
 })->name('homepage');
 
-Route::get('/about-us', [AboutController::class, 'aboutUs'])->name('about-us');
+Route::get('/about-us', [AboutController::class, 'aboutUs'])->name('about-us')->middleware('auth');
 
 //Route::get('/admin/authors', [AuthorController::class, 'index'])->name('authors');

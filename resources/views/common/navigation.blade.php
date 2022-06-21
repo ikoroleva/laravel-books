@@ -5,6 +5,7 @@ $links = [
     'authors' => 'Authors',
     'about-us' => 'About us'
 ];
+
 @endphp
 
 <nav>
@@ -18,5 +19,26 @@ $links = [
     @endif
 
 @endforeach
+
+@auth
+
+{{Auth::user()->email}}
+
+<form action="{{ route('logout')}}" method="post">
+@csrf
+<button>Logout</button>
+</form>
+
+@else 
+
+<a href="{{route('login')}}">Login</a>
+
+@endauth
+
+@guest
+
+<a href="{{route('register')}}">Register here!</a>
+    
+@endguest
 
 </nav>

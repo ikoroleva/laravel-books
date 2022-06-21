@@ -1,4 +1,4 @@
-$primary_color: black;
+$primary_color: #444;
 $primary_font: Arial;
 
 * {
@@ -6,10 +6,34 @@ $primary_font: Arial;
 }
 
 body {
+    margin: 0;
     font-family: $primary_font;
     color: $primary_color;
+    padding: 2em;
 }
 
 h1 {
     text-decoration: underline;
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: $primary_color;
+    color: white;
+    padding: 0.5em;
+    display: flex;
+
+    a,
+    span {
+        margin: 0 0.5em;
+    }
+
+    a {
+        color: white;
+    }
+}
+
+@import './latest-books.scss';
