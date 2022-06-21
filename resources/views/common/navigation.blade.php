@@ -3,6 +3,7 @@
 $links = [
     'homepage' => 'Home',
     'authors' => 'Authors',
+    'books' => 'Books',
     'about-us' => 'About us'
 ];
 

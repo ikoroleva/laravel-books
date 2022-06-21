@@ -14,11 +14,17 @@ class BookResourse extends JsonResource
      */
     public function toArray($request)
     {
+
+
+        foreach ($this->authors as $author) {
+            $authors[] = $author;
+        }
+
         return [
             'title' => $this->title,
             'image' => $this->image,
             'description' => $this->description,
-            'authors' => []
+            'authors' => $authors
         ];
     }
 }
