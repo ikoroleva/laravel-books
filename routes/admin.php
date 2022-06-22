@@ -1,18 +1,29 @@
 <?php
 
+//this file will contain all the routes for administraton interface
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdminController;
+
+
+//
+
+Route::get('/admin', [AdminController::class, 'index'])->middleware('can:admin')->name('admin.home');
 
 //authors
 
-Route::get('/admin/authors', [AuthorController::class, 'index'])->name('authors');
-Route::get('/admin/authors/create', [AuthorController::class, 'create'])->name('authors.create');
-Route::post('/admin/authors', [AuthorController::class, 'store'])->name('authors.store');
+Route::group(['middleware' => 'can:admin'], function () {
 
-//books
-Route::get('/admin/books', [BookController::class, 'index'])->name('books');
-Route::get('/admin/books/{book_id}', [BookController::class, 'show'])->name('books.show');
+    Route::get('/authors', [AuthorController::class, 'index'])->name('authors');
+    Route::get('/authors/create', [AuthorController::class, 'create'])->name('authors.create');
+    Route::post('authors', [AuthorController::class, 'store'])->name('authors.store');
 
-Route::post('/admin/books/{book_id}/review', [ReviewController::class, 'store'])->name('review.store');
+    //books
+    Route::get('/books', [BookController::class, 'index'])->name('books');
+    Route::get('/books/{book_id}', [BookController::class, 'show'])->name('books.show');
+
+    Route::post('/books/{book_id}/review', [ReviewController::class, 'store'])->name('review.store');
+});

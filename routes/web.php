@@ -19,6 +19,10 @@ use App\Models\Book;
 
 Route::get('/', function () {
 
+    // if (\Gate::allows('admin')) {
+    //     return 'The user is Admin!';
+    // }
+
     $books = \App\Models\Book::orderBy('title')->limit(10)->get();
 
     $books->load('authors');
@@ -27,5 +31,6 @@ Route::get('/', function () {
 })->name('homepage');
 
 Route::get('/about-us', [AboutController::class, 'aboutUs'])->name('about-us')->middleware('auth');
+
 
 //Route::get('/admin/authors', [AuthorController::class, 'index'])->name('authors');

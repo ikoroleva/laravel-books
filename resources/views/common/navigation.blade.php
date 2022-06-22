@@ -42,4 +42,10 @@ $links = [
     
 @endguest
 
+@can('admin')
+
+<a href="{{route('admin.home')}}">Administration</a>
+
+@endcan
+
 </nav>

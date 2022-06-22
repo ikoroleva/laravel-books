@@ -25,6 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('admin', function ($user) {
+
+            if (substr($user->email, -10) == '@gmail.com') {
+                return true;
+            } else {
+                return false;
+            }
+            dd($user);
+            // return $user->id == 1;
+        });
     }
 }
