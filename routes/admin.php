@@ -32,5 +32,7 @@ Route::group(['middleware' => 'can:admin'], function () {
     Route::get('/books', [BookController::class, 'index'])->name('books');
     Route::get('/books/{book_id}', [BookController::class, 'show'])->name('books.show');
 
-    Route::post('/books/{book_id}/review', [ReviewController::class, 'store'])->name('review.store');
+    //Route::post('/books/{book_id}/review', [ReviewController::class, 'store'])->name('review.store');
+
+
 });

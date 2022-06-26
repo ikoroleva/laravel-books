@@ -25,9 +25,9 @@
    @auth
     <h4>Reviews</h4>
 
-    @include('common/messages');
+    @include('common/messages')
    
-    <form action="{{$book->id}}/review" method="post">
+    <form action="{{route('reviews.store', $book->id)}}" method="post">
         @csrf
 
         <textarea name="text" cols="60" rows="5">{{ old('text') }}</textarea>
@@ -37,12 +37,24 @@
 
     @endauth
 
+
+
     @foreach ($reviews as $review)
 
+    <br>
+    <div>{{$review->user->name}}</div>
     <br>
     <div>{{$review->text}}</div>
     <br>
 
+    @can('admin')
+    <form action="{{route('reviews.delete', $review->id)}}" method="POST">
+        @method('delete')
+        @csrf
+        <button>Delete</button>
+    </form>
+    <br>
+    @endcan
 
 
     @endforeach

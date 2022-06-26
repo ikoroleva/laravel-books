@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthorController;
 use App\Models\Book;
+use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\BookshopController;
+
 
 
 /*
@@ -32,5 +36,18 @@ Route::get('/', function () {
 
 Route::get('/about-us', [AboutController::class, 'aboutUs'])->name('about-us')->middleware('auth');
 
+//routes for books from user
 
-//Route::get('/admin/authors', [AuthorController::class, 'index'])->name('authors');
+Route::get('/books/{book_id}', [BookController::class, 'show'])->name('books.show');
+Route::post('/books/{book_id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+//routes for bookshops
+
+Route::get('/bookshops', [BookshopController::class, 'index'])->name('bookshops');
+Route::get('/bookshops/{bookshops_id}', [BookshopController::class, 'show'])->name('bookshops.show');
+
+
+Route::group(['middleware' => 'can:admin'], function () {
+
+    Route::delete('/reviews/{review_id}', [ReviewController::class, 'delete'])->name('reviews.delete');
+});

@@ -26,6 +26,8 @@ const makeBookElement = (book_data) => {
 
     element.classList.add('movie');
 
+    console.log(book_data);
+
     let authors_html = '';
     book_data.authors.forEach((author, i) => {
         if (i && i < book_data.authors.length - 1) {
@@ -39,7 +41,10 @@ const makeBookElement = (book_data) => {
         `
     })
 
+
+
     element.innerHTML = `
+        <a href ="/books/${book_data.id}">
         <h3 class="movie__title">${book_data.title} by ${authors_html}</h3>
         <div class="movie__image">
             <img src="${book_data.image}" alt="book cover">

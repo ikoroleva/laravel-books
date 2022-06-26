@@ -11,10 +11,11 @@ class ReviewController extends Controller
 {
     public function store(Request $request, $book_id)
     {
+        //\Auth::user();
+        //dd(auth()->user());
 
-        // dd($request);
         $user_id = Auth::id();
-        $userExist = Review::where('user_id', '=', $user_id)->first();
+        $userExist = Review::where([['user_id', '=', $user_id], ['book_id', '=', $book_id]])->first();
 
         //dd($userExist);
 
@@ -42,16 +43,21 @@ class ReviewController extends Controller
             session()->flash('error_user_message', 'You have already left review for this book');
         }
 
-
-
-
-
-
         // dd($review);
 
 
+        return redirect()->back();
+    }
 
+    public function delete($id)
+    {
 
-        return redirect(url('/admin/books/' . $book_id));
+        $review = Review::findOrFail($id);
+
+        $review->delete();
+
+        session()->flash('success_message', 'Review was deleted.');
+
+        return redirect()->back();
     }
 }

@@ -27,12 +27,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('admin', function ($user) {
 
-            if (substr($user->email, -10) == '@gmail.com') {
+            if ($user->role == 'admin') {
                 return true;
             } else {
                 return false;
             }
-            dd($user);
+            //dd($user);
             // return $user->id == 1;
         });
     }

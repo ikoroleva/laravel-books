@@ -12,7 +12,7 @@ class BookController extends Controller
 {
     public function latest()
     {
-        $books = Book::with('authors')->orderBy('publication_date', 'desc')->limit(10)->get();
+        $books = Book::with('authors')->orderBy('publication_date', 'desc')->limit(15)->get();
 
         return BookResourse::collection($books);
     }

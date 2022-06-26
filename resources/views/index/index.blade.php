@@ -20,7 +20,7 @@
 
 <div id="latest-books"></div>
 
-<ul>
+{{-- <ul>
     @foreach ($books as $book)
     <li>
         {{$book->title}}
@@ -31,7 +31,7 @@
 
     </li>
     @endforeach
-</ul>
+</ul> --}}
 
 
 

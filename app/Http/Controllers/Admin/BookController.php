@@ -28,6 +28,8 @@ class BookController extends Controller
 
         $reviews = $book->reviews;
 
+        // dd($reviews);
+
         return view('books.show', compact('book', 'authors', 'reviews'));
     }
 }
